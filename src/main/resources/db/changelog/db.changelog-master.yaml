@@ -1,0 +1,69 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1-create-students
+      author: cascade
+      changes:
+        - createTable:
+            tableName: students
+            columns:
+              - column:
+                  name: id
+                  type: BIGINT
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: first_name
+                  type: VARCHAR(100)
+              - column:
+                  name: last_name
+                  type: VARCHAR(100)
+              - column:
+                  name: email
+                  type: VARCHAR(150)
+              - column:
+                  name: age
+                  type: INT
+  - changeSet:
+      id: 2-seed-student
+      author: cascade
+      changes:
+        - insert:
+            tableName: students
+            columns:
+              - column:
+                  name: first_name
+                  value: John
+              - column:
+                  name: last_name
+                  value: Doe
+              - column:
+                  name: email
+                  value: john.doe@example.com
+              - column:
+                  name: age
+                  valueNumeric: 21
+  - changeSet:
+      id: 3-create-teachers
+      author: cascade
+      changes:
+        - createTable:
+            tableName: teachers
+            columns:
+              - column:
+                  name: id
+                  type: BIGINT
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: first_name
+                  type: VARCHAR(100)
+              - column:
+                  name: last_name
+                  type: VARCHAR(100)
+              - column:
+                  name: email
+                  type: VARCHAR(150)
